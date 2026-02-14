@@ -2,6 +2,21 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14Feb 2026: Phil Stracchino <phils@caerllewys.net> icbm-1.7.ebuild
+  Added the new default setting 'dateinsignon' (defaults to off).  If set to a
+  TRUE value, calc_logintime() now returns both the date and time of sign-on.
+  If FALSE, ICBM reverts to the naive classic cicb behavior if displaying only
+  sign-on time.
+  calc_idletime() now parses days out of the idle time if idletime is greater
+  than 86400 seconds.
+  Boolean defaults (timestamps and dateinsignon) now accept, case insensitively,
+  any of 'yes', 'on', ;'true', '1' as TRUE values.  Anything else is considered
+  false.
+  Default setting names are now documented as case insensitive.
+
+  08May 2024: Phil Stracchino <phils@caerllewys.net> icbm-1.6.0.2.ebuild
+  Multiple corrections to handling of possible DEL key keysyms
+
   31Oct 2023: Phil Stracchino <phils@caerllewys.net> icbm-1.6.0.2.ebuild
   Minor fix to minor fix to url grabber ...
 
