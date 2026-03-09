@@ -6,9 +6,16 @@
     <name>Phil Stracchino</name>
     <email>phils@caerllewys.net</email>
   </maintainer>
+  <upstream>
+    <maintainer>
+      <name>Robert J. Hansen</name>
+      <email>rjh@sixdemonbag.org</email>
+    </maintainer>
+  </upstream>
   <longdescription>
-  A tool that constructs cryptographically strong passwords using the HC128 stream cipher.
+  A command-line tool that constructs cryptographically strong passwords using the HC128 stream cipher.
   </longdescription>
+  <bugs-to>https://github.com/rjhansen/rpass/issues</bugs-to>
   <use>
   </use>
 </pkgmetadata>

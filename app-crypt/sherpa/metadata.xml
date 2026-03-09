@@ -6,9 +6,16 @@
     <name>Phil Stracchino</name>
     <email>phils@caerllewys.net</email>
   </maintainer>
+  <upstream>
+    <maintainer>
+      <name>Robert J. Hansen</name>
+      <email>rjh@sixdemonbag.org</email>
+    </maintainer>
+  </upstream>
   <longdescription>
   A tool to migrate GnuPG profiles.
   </longdescription>
+  <bugs-to>https://github.com/rjhansen/sherpa/issues</bugs-to>
   <use>
   </use>
 </pkgmetadata>
