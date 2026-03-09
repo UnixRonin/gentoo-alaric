@@ -88,8 +88,9 @@ CRATES="
 inherit cargo
 
 DESCRIPTION="Constructs cryptographically strong passwords using the HC128 stream cipher."
-HOMEPAGE=""
+HOMEPAGE="https://github.com/rjhansen/rpass"
 SRC_URI="
+    https://github.com/rjhansen/rpass/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}
 "
 
