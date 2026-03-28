@@ -63,6 +63,7 @@ RDEPEND="
 	>=dev-perl/Unicode-LineBreak-2011.05
 	>=dev-perl/Unicode-CaseFold-0.02
 	>=dev-perl/URI-1.35
+    >=dev-perl/URI-Find-20160806
 	>=dev-perl/XML-LibXML-1.70
 	>=dev-perl/libintl-perl-1.20
 	dev-perl/libwww-perl
@@ -97,6 +98,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	"
+
+PATCHES=(
+    "${FILESDIR}"/${P}-no-ignore-case.patch
+)
 
 src_prepare() {
 	default
