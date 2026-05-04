@@ -14,7 +14,7 @@ RESTRICT="mirror"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~mips ppc ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="doc"
+IUSE="doc xft"
 
 RDEPEND=">=x11-libs/motif-2.3:0
 	x11-libs/libXt
@@ -37,8 +37,11 @@ src_prepare() {
 	sed \
 		-e "s|bin/|${EPREFIX}/bin/|g" \
 		-i Makefile source/preferences.c source/help_data.h source/nedit.c Xlt/Makefile || die
-	sed -i -e "s|C_OPT_FLAGS?=-O|C_OPT_FLAGS?=-DUSE_XFT=1 ${CFLAGS}|" -e "s|check_tif_rule||" \
-		makefiles/Makefile.linux || die
+        
+    if use xft; then
+	    sed -i -e "s|C_OPT_FLAGS?=-O|C_OPT_FLAGS?=-DUSE_XFT=1 ${CFLAGS}|" -e "s|check_tif_rule||" \
+		    makefiles/Makefile.linux || die
+    fi
 }
 
 
