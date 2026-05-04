@@ -29,6 +29,19 @@ PATCHES=(
 	  "${FILESDIR}/${P}-doc.patch"
 )
 
+src_prepare() {
+	# respecting LDFLAGS, nedit bug #208189
+    # make sure we force USE_XFT=1 in CFLAGS
+	default
+
+	sed \
+		-e "s|bin/|${EPREFIX}/bin/|g" \
+		-i Makefile source/preferences.c source/help_data.h source/nedit.c Xlt/Makefile || die
+	sed -i -e "s|C_OPT_FLAGS?=-O|C_OPT_FLAGS?=-DUSE_XFT=1 ${CFLAGS}|" -e "s|check_tif_rule||" \
+		makefiles/Makefile.linux || die
+}
+
+
 src_compile() {
 	case "${CHOST}" in
 		*-darwin*)

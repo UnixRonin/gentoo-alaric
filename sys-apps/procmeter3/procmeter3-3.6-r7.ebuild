@@ -13,12 +13,14 @@ SRC_URI="https://www.gedanken.org.uk/software/procmeter3/download/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk lcd log"
+IUSE="gtk2 gtk3 lcd log"
 RESTRICT="mirror"
 
 DEPEND="x11-libs/libXaw
-	gtk?  (	x11-libs/libX11
+	gtk2?  (	x11-libs/libX11
 		>=x11-libs/gtk+-2.0 )
+	gtk3?  (	x11-libs/libX11
+		>=x11-libs/gtk+-3.0 )
 	lcd?  (	app-misc/lcdproc )"
 
 RDEPEND="${DEPEND}"
@@ -43,7 +45,8 @@ src_prepare() {
 
 src_compile() {
 	local targets='procmeter3-xaw'
-	use gtk && targets="${targets} procmeter3-gtk2"
+	use gtk3 && targets="${targets} procmeter3-gtk3"
+	use gtk2 && targets="${targets} procmeter3-gtk2"
 	use log && targets="${targets} procmeter3-log"
 	use lcd && targets="${targets} procmeter3-lcd"
 	einfo "Selected build targets: $targets"
@@ -58,6 +61,7 @@ src_compile() {
 	[ -f ${S}/procmeter3-lcd ]  || \
 	[ -f ${S}/procmeter3-log ]  || \
 	[ -f ${S}/procmeter3-gtk2 ] || \
+	[ -f ${S}/procmeter3-gtk3 ] || \
 	die "emake failed to build any selected target."
 }
 
@@ -66,6 +70,7 @@ src_install() {
 		DESTDIR="${D}" \
 		install || die "emake install failed"
         
+	[ -f "${D}"/usr/bin/procmeter3-gtk3 ] && ln -fs procmeter3-gtk3 "${D}"/usr/bin/gprocmeter3
 	[ -f "${D}"/usr/bin/procmeter3-gtk2 ] && ln -fs procmeter3-gtk2 "${D}"/usr/bin/gprocmeter3
 	[ -f "${D}"/usr/bin/procmeter3-xaw ] && ln -fs procmeter3-xaw "${D}"/usr/bin/procmeter3
 }
