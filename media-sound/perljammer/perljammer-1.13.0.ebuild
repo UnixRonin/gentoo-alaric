@@ -16,7 +16,9 @@ RESTRICT="mirror"
 
 
 RDEPEND="
-	>=dev-lang/perl-5.6.0[ithreads]
+	|| ( >=dev-lang/perl-5.6.0[ithreads]
+         >=dev-lang/perl-5.38.2[perl_features_ithreads]
+    )
 	>=dev-perl/Tk-804
 	dev-perl/DBI
 	dev-perl/MP3-Info
